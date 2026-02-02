@@ -186,80 +186,50 @@ class _FllTimerScreenState extends State<FllTimerScreen> with SingleTickerProvid
             ),
           ),
           Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    return CustomPaint(
-                      size: const Size(320, 320),
-                      painter: TechCirclePainter(_animationController.value),
-                      child: child,
-                    );
-                  },
-                  child: SizedBox(
-                    width: 320,
-                    height: 320,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          timeText,
-                          style: const TextStyle(
-                            fontSize: 72,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.5,
-                            shadows: [
-                              Shadow(
-                                blurRadius: 15.0,
-                                color: Color(0xFF00E0FF),
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          'ROBOT GAME',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: const Color(0xFFFFFFFF),
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 4,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 40),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
+            child: AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) {
+                return CustomPaint(
+                  size: const Size(500, 500), // Increased size
+                  painter: TechCirclePainter(_animationController.value),
+                  child: child,
+                );
+              },
+              child: SizedBox(
+                width: 500, // Increased size
+                height: 500, // Increased size
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _TechButton(
-                      text: 'СТАРТ',
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF00B2FF), Color(0xFF00E0FF)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                    Text(
+                      timeText,
+                      style: const TextStyle(
+                        fontSize: 110, // Increased font size
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.5,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 15.0,
+                            color: Color(0xFF00E0FF),
+                            offset: Offset(0, 0),
+                          ),
+                        ],
                       ),
-                      onTap: start,
                     ),
-                    const SizedBox(width: 20),
-                    _TechButton(
-                      text: 'СБРОС',
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFFFFA726), Color(0xFFFF7043)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                    const SizedBox(height: 10),
+                    Text(
+                      'ROBOT GAME',
+                      style: TextStyle(
+                        fontSize: 26, // Increased font size
+                        color: const Color(0xFFFFFFFF),
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 4,
                       ),
-                      onTap: reset,
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
           Positioned(
@@ -296,6 +266,35 @@ class _FllTimerScreenState extends State<FllTimerScreen> with SingleTickerProvid
                   ],
                 ),
               ),
+            ),
+          ),
+          Positioned(
+            bottom: screenPadding.bottom + 40, // Moved buttons down
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _TechButton(
+                  text: 'СТАРТ',
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF00B2FF), Color(0xFF00E0FF)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  onTap: start,
+                ),
+                const SizedBox(width: 20),
+                _TechButton(
+                  text: 'СБРОС',
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFFFA726), Color(0xFFFF7043)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  onTap: reset,
+                ),
+              ],
             ),
           ),
           Positioned(
